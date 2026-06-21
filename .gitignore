@@ -11,3 +11,12 @@ echo .mlruns/ >> .gitignore
 echo env/ >> .gitignore
 echo *.html >> .gitignore
 echo config/config.yaml >> .gitignore
+**/.ipynb_checkpoints/
+**/mlruns/
+**/.mlruns/
+mlflow.db
+__pycache__/
+*.pyc
+*.pyo
+
+python
