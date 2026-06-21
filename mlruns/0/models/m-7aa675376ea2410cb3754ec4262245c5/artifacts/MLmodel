@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/mourt/OneDrive/Documents/Projet/school-student-performance/mlruns/0/models/m-7aa675376ea2410cb3754ec4262245c5/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.12.13
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.5.1
+    skops_trusted_types: null
+mlflow_version: 3.14.0
+model_id: m-7aa675376ea2410cb3754ec4262245c5
+model_size_bytes: 5411
+model_uuid: m-7aa675376ea2410cb3754ec4262245c5
+prompts: null
+run_id: 04f8b24f0aef47edb77d50987866080b
+utc_time_created: '2026-06-21 14:23:00.375494'
