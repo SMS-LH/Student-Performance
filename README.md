@@ -25,8 +25,8 @@
 </p>
 
 <p align="center">
-  <a href="https://school-dashboard.onrender.com" target="_blank"><strong>🖥️ Dashboard en ligne</strong></a> &nbsp;|&nbsp;
-  <a href="https://school-api.onrender.com/docs" target="_blank"><strong>📡 API Swagger</strong></a> &nbsp;|&nbsp;
+  <a href="https://school-dashboard-1ggu.onrender.com" target="_blank"><strong>🖥️ Dashboard en ligne</strong></a> &nbsp;|&nbsp;
+  <a href="https://student-api-ey7g.onrender.com/docs" target="_blank"><strong>📡 API Swagger</strong></a> &nbsp;|&nbsp;
   <a href="#installation"><strong>💻 Installation locale</strong></a>
 </p>
 

@@ -1,20 +1,12 @@
-echo # Fichiers et dossiers à ignorer > .gitignore
-echo __pycache__/ >> .gitignore
-echo *.py[cod] >> .gitignore
-echo *.pkl >> .gitignore
-echo *.joblib >> .gitignore
-echo .ipynb_checkpoints/ >> .gitignore
-echo data/raw/ >> .gitignore
-echo data/processed/ >> .gitignore
-echo models/ >> .gitignore
-echo .mlruns/ >> .gitignore
-echo env/ >> .gitignore
-echo *.html >> .gitignore
-echo config/config.yaml >> .gitignore
+# Jupyter
 **/.ipynb_checkpoints/
+
+# MLflow
 **/mlruns/
-**/.mlruns/
+.mlruns/
 mlflow.db
+
+# Python
 __pycache__/
 *.pyc
 *.pyo
