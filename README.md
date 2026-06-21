@@ -83,7 +83,6 @@ school-student-performance/
 ├── setup.py
 ├── .gitignore
 ├── render.yaml
-├── mlflow.db
 │
 ├── .github/
 │   └── workflows/
