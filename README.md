@@ -27,7 +27,7 @@
 <p align="center">
   <a href="https://school-dashboard-1ggu.onrender.com" target="_blank"><strong>🖥️ Dashboard en ligne</strong></a> &nbsp;|&nbsp;
   <a href="https://student-api-ey7g.onrender.com/docs" target="_blank"><strong>📡 API Swagger</strong></a> &nbsp;|&nbsp;
-  <a href="## 9. Installation et utilisation en local"><strong>💻 Installation locale</strong></a>
+  <a href="#9-installation-et-utilisation-en-local"><strong>💻 Installation locale</strong></a>
 </p>
 
 <br/>
