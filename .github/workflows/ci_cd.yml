@@ -22,12 +22,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Installation des dépendances
+            - name: Installation des dépendances
         run: |
           pip install --upgrade pip
           pip install -e .
           pip install -r api/requirements_api.txt
           pip install -r dashboard/requirements_ui.txt
+          pip install mlflow
           pip install pytest pytest-cov httpx
 
       - name: Exécution des tests
