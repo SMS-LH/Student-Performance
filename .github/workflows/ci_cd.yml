@@ -1,0 +1,49 @@
+name: CI - Tests et Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4
+
+      - name: Configuration Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Installation des dépendances
+        run: |
+          pip install --upgrade pip
+          pip install -e .
+          pip install -r api/requirements_api.txt
+          pip install -r dashboard/requirements_ui.txt
+          pip install pytest pytest-cov httpx
+
+      - name: Exécution des tests
+        run: |
+          pytest tests/ -v --cov=src --cov=api --cov-report=term-missing
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installation des outils d'analyse
+        run: |
+          pip install flake8
+      - name: Linting (vérification du style)
+        run: |
+          flake8 src/ tests/ api/ --count --select=E9,F63,F7,F82 --show-source --statistics
