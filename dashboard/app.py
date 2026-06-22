@@ -291,7 +291,7 @@ with tab0:
                      labels={'x':'Classe', 'y':'Score moyen'},
                      title="Score moyen prédit par classe")
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
         
     with col_g2:
         st.markdown("### Répartition des niveaux de risque")
@@ -300,7 +300,7 @@ with tab0:
         colors = ['#dc3545', '#fd7e14', '#28a745']
         fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker_colors=colors)])
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
     
     st.markdown("---")
     st.markdown("### 📈 Évolution trimestrielle")
@@ -310,7 +310,7 @@ with tab0:
                   labels={'x':'Trimestre', 'y':'Score moyen'},
                   title="Progression du score moyen")
     fig.update_traces(line_color='#2C5364', line_width=3)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 # ============================================================
 # ONGLET 1 : Prédiction individuelle
@@ -354,7 +354,7 @@ with tab1:
         learning_dis = st.selectbox("Troubles de l'apprentissage diagnostiqués", ["Non", "Oui"], help="Dyslexie, TDAH, etc.")
         
         # Conversion vers les valeurs attendues par l'API (anglais)
-        submitted = st.form_submit_button("🔍 Estimer le score", use_container_width=True)
+        submitted = st.form_submit_button("🔍 Estimer le score", width='stretch')
     
     if submitted:
         # Mapper les labels français vers les labels anglais
@@ -470,7 +470,7 @@ with tab1:
                     }
                 ))
                 fig.update_layout(height=350, margin=dict(l=30, r=30, t=50, b=30))
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width='stretch')
 
 # ============================================================
 # ONGLET 2 : Analyse par lot
@@ -519,7 +519,7 @@ with tab2:
             batch_df = pd.read_csv(uploaded_file)
             st.success(f"✅ {len(batch_df)} élèves chargés.")
             with st.expander("👀 Aperçu des premières lignes"):
-                st.dataframe(batch_df.head(10), use_container_width=True)
+                st.dataframe(batch_df.head(10), width='stretch')
             
             # Conversion des colonnes françaises vers l'anglais pour l'API
             col_map = {
@@ -561,7 +561,7 @@ with tab2:
                 if batch_df[col].dtype == object:
                     batch_df[col] = batch_df[col].map(lambda x: value_map.get(str(x), x))
             
-            if st.button("🚀 Lancer l'estimation pour tous les élèves", type="primary", use_container_width=True):
+            if st.button("🚀 Lancer l'estimation pour tous les élèves", type="primary", width='stretch'):
                 progress_bar = st.progress(0)
                 status_text = st.empty()
                 predictions = []
@@ -610,9 +610,9 @@ with tab2:
                     )
                     fig_dist.add_vline(x=60, line_dash="dash", line_color="red", annotation_text="Seuil risque")
                     fig_dist.add_vline(x=70, line_dash="dash", line_color="orange", annotation_text="Seuil modéré")
-                    st.plotly_chart(fig_dist, use_container_width=True)
+                    st.plotly_chart(fig_dist, width='stretch')
                 
-                st.dataframe(batch_df, use_container_width=True)
+                st.dataframe(batch_df, width='stretch')
                 
                 csv_result = batch_df.to_csv(index=False).encode('utf-8')
                 st.download_button(
@@ -620,7 +620,7 @@ with tab2:
                     csv_result,
                     f"resultats_lot_{datetime.now().strftime('%Y%m%d_%H%M')}.csv",
                     "text/csv",
-                    use_container_width=True,
+                    width='stretch',
                 )
         except Exception as e:
             st.error(f"❌ Erreur : {str(e)}")
@@ -698,7 +698,7 @@ with tab3:
         st.markdown("### 📜 Historique de vos estimations")
         st.dataframe(
             st.session_state.history.sort_values("Date", ascending=False),
-            use_container_width=True,
+            width='stretch',
         )
         csv_hist = st.session_state.history.to_csv(index=False).encode('utf-8')
         st.download_button(
