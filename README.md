@@ -32,7 +32,21 @@
 
 <br/>
 
-## 2. Contexte et objectifs
+## Table des matières
+
+- [1. Contexte et objectifs](#1-contexte-et-objectifs)
+- [2. Aperçu du projet](#2-aperçu-du-projet)
+- [3. Architecture du projet](#3-architecture-du-projet)
+- [4. Données](#4-données)
+- [5. Résumé de l’analyse exploratoire](#5-résumé-de-lanalyse-exploratoire)
+- [6. Modélisation](#6-modélisation)
+- [7. Structure du code source (src/)](#7-structure-du-code-source-src)
+- [8. Installation et utilisation en local](#8-installation-et-utilisation-en-local)
+- [9. Déploiement](#9-déploiement)
+- [10. Tests et CI/CD](#10-tests-et-cicd)
+- [11. Auteurs et remerciements](#11-auteurs-et-remerciements)
+
+## 1. Contexte et objectifs
 
 ### Problématique
 
@@ -62,7 +76,7 @@ Le projet fournit un ensemble complet d’outils opérationnels :
 
 Ce système s’adresse aux **enseignants**, **conseillers pédagogiques** et **chefs d’établissement** qui souhaitent un outil transparent d’aide à la décision pour le suivi des élèves.
 
-## 3. Aperçu du projet
+## 2. Aperçu du projet
 
 Le projet est structuré en deux services accessibles en ligne :
 
@@ -74,7 +88,7 @@ Le projet est structuré en deux services accessibles en ligne :
 
 Les deux services sont déployés automatiquement à chaque mise à jour du dépôt GitHub, assurant une parfaite synchronisation avec la dernière version du modèle.
 
-## 4. Architecture du projet
+## 3. Architecture du projet
 
 ```
 school-student-performance/
@@ -149,7 +163,7 @@ school-student-performance/
 - **dashboard** : interface Streamlit pour l'utilisation du modèle par les équipes pédagogiques.
 - **models** : artefacts de modèles sauvegardés (pipeline final au format joblib).
 
-## 5. Données
+## 4. Données
 
 ### Source
 
@@ -193,7 +207,7 @@ Trois variables présentent des valeurs manquantes, en très faible proportion :
 
 Ces valeurs sont imputées par le mode lors du prétraitement, avant l'encodage et la standardisation.
 
-## 6. Résumé de l'analyse exploratoire
+## 5. Résumé de l'analyse exploratoire
 
 Le notebook **01_exploratory_analysis.ipynb** détaille l'exploration des données. Les principaux constats sont les suivants.
 
@@ -204,7 +218,7 @@ Le notebook **01_exploratory_analysis.ipynb** détaille l'exploration des donné
 - Parmi les variables catégorielles, l'implication parentale, l'accès aux ressources, l'influence des pairs, le niveau d'éducation des parents et la distance au domicile sont les plus discriminantes. Le genre et le type d'école ne montrent quasiment aucune différence de score entre leurs modalités.
 - Ces observations ont conduit à conserver toutes les variables pour la modélisation, en appliquant une standardisation aux numériques, un encodage ordinal pour les variables dotées d'un ordre naturel et un one‑hot encoding pour les nominales.
 
-## 7. Modélisation
+## 6. Modélisation
 
 Le notebook **02_model_testing.ipynb** décrit l’ensemble de la phase de modélisation, du prétraitement à la sélection finale.
 
@@ -251,7 +265,7 @@ Les coefficients du modèle linéaire permettent d’identifier les facteurs qui
 
 Ces cinq variables constituent des leviers d’action concrets pour les enseignants et les familles.
 
-## 8. Structure du code source (src/)
+## 7. Structure du code source (src/)
 
 Le dossier **src/** contient les modules réutilisables qui implémentent les différentes étapes du pipeline de machine learning.
 
@@ -264,7 +278,7 @@ Le dossier **src/** contient les modules réutilisables qui implémentent les di
 - **prediction.py** : chargement du pipeline sauvegardé et prédiction pour un nouvel étudiant.
 
 
-## 9. Installation et utilisation en local
+## 8. Installation et utilisation en local
 
 ### Prérequis
 
@@ -320,7 +334,7 @@ streamlit run dashboard/app.py
 ```
 Le dashboard est accessible à l’adresse **http://localhost:8501**.
 
-## 10. Déploiement
+## 9. Déploiement
 
 Le projet est déployé sur **Render**, une plateforme cloud qui permet de mettre en ligne des services web directement depuis un dépôt GitHub.
 
@@ -347,7 +361,7 @@ Le déploiement est déclenché automatiquement à chaque push sur la branche pr
 Le dashboard utilise une variable d'environnement **API_URL** qui pointe vers l'URL de l'API déployée, afin d'effectuer les prédictions à distance.
 
 
-## 11. Tests et CI/CD
+## 10. Tests et CI/CD
 
 ### Tests unitaires
 
@@ -375,7 +389,7 @@ Il se déclenche à chaque push ou pull request sur la branche principale et ex�
 
 Ce workflow garantit que chaque modification du code est validée avant d’être fusionnée ou déployée.
 
-## 12. Auteurs et remerciements
+## 11. Auteurs et remerciements
 
 ### Auteurs
 
